@@ -1,4 +1,4 @@
-package com.TEAM_FIVE_SOFTWARE.App_Web;
+package com.TEAM_FIVE_SOFTWARE.App_Web.Modelos;
 
 import javax.persistence.*;
 

@@ -1,5 +1,6 @@
 package com.TEAM_FIVE_SOFTWARE.App_Web;
 
+import com.TEAM_FIVE_SOFTWARE.App_Web.Modelos.Empresa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
