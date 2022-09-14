@@ -9,30 +9,38 @@ import java.util.ArrayList;
 import java.util.List;
 //Le decimos a Spring que esta clase es de servicios
 @Service
-public class EmpresaService  {
+public class EmpresaService {
     @Autowired //Conectamos esta clase con el repository de Empresa
     EmpresaRepository empresaRepository; //Creamos un objeto de tipo EmpresaRepository para poder usar los metodos que dicha clase hereda
 
     //Metodo que retornará la lista de empresas usando metodos heredados del jpaRepository
-    public List<Empresa> getAllEmpresas(){
+    public List<Empresa> getAllEmpresas() {
         List<Empresa> empresaList = new ArrayList<>();
         empresaRepository.findAll().forEach(empresa -> empresaList.add(empresa));
         //Por cada empresa que me encuentre, entonces agg esa empresa a la Lista de Empresas
         return empresaList;
     }
+
     //Metodo que me trae un objeto de tipo Empresa cuando cuento con el id de la misma
-    public Empresa getEmpresaById(Integer id){
-        return  empresaRepository.findById(id).get();
+    public Empresa getEmpresaById(Integer id) {
+        return empresaRepository.findById(id).get();
     }
 
     //Metodo para guardar o actualizar objetos de tipo Empresa
-    public boolean saveOrUpdateEmpresa(Empresa empresa){
-        Empresa emp=empresaRepository.save(empresa);
-        if(empresaRepository.findById(emp.getId())!=null){
+    public boolean saveOrUpdateEmpresa(Empresa empresa) {
+        Empresa emp = empresaRepository.save(empresa);
+        if (empresaRepository.findById(emp.getId()) != null) {
             return true;
         }
         return false;
     }
 
-    //metodo delete pendiente
+    //metodo para eliminar empresas resgistradas teniendo el id
+    public boolean deleteEmpresa(Integer id) {
+        empresaRepository.deleteById(id);
+        if (getEmpresaById(id) != null) {
+            return false;
+        }
+        return true;
+    }
 }
